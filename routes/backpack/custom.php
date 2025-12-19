@@ -14,9 +14,10 @@ Route::group([
         (array) config('backpack.base.web_middleware', 'web'),
         (array) config('backpack.base.middleware_key', 'admin')
     ),
-    'namespace' => 'App\Http\Controllers\Admin',
-], function () { // custom admin routes
-}); // this should be the absolute last line of this file
+], function () {
+    include base_path('app/Modules/Core/Routes/backpack.php');
+    include base_path('app/Modules/HR/Routes/backpack.php');
+});
 
 /**
  * DO NOT ADD ANYTHING HERE.

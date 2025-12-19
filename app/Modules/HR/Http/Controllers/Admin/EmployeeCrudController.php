@@ -1,0 +1,118 @@
+<?php
+
+namespace App\Modules\HR\Http\Controllers\Admin;
+
+use App\Modules\HR\Http\Requests\EmployeeRequest;
+use App\Modules\HR\Models\Employee;
+use Backpack\CRUD\app\Http\Controllers\CrudController;
+use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+
+class EmployeeCrudController extends CrudController
+{
+    use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+
+    public function setup(): void
+    {
+        CRUD::setModel(Employee::class);
+        CRUD::setRoute(config('backpack.base.route_prefix').'/employees');
+        CRUD::setEntityNameStrings(__('hr::crud.employee'), __('hr::crud.employees'));
+
+        if (backpack_user()->hasRole('HR')) {
+            CRUD::denyAccess(['delete']);
+        }
+    }
+
+    protected function setupListOperation(): void
+    {
+        CRUD::column('first_name')->label(__('hr::crud.first_name'));
+        CRUD::column('last_name')->label(__('hr::crud.last_name'));
+        CRUD::column('hire_date')->label(__('hr::crud.hire_date'));
+        CRUD::addColumn([
+            'name' => 'branch_id',
+            'label' => __('hr::crud.branch'),
+            'type' => 'select',
+            'entity' => 'branch',
+            'attribute' => 'name',
+            'model' => 'App\\Modules\\Core\\Models\\Branch',
+        ]);
+        CRUD::addColumn([
+            'name' => 'department_id',
+            'label' => __('hr::crud.department'),
+            'type' => 'select',
+            'entity' => 'department',
+            'attribute' => 'name',
+            'model' => 'App\\Modules\\Core\\Models\\Department',
+        ]);
+        CRUD::addColumn([
+            'name' => 'job_title_id',
+            'label' => __('hr::crud.job_title'),
+            'type' => 'select',
+            'entity' => 'jobTitle',
+            'attribute' => 'name',
+            'model' => 'App\\Modules\\Core\\Models\\JobTitle',
+        ]);
+        CRUD::addColumn([
+            'name' => 'is_active',
+            'label' => __('hr::crud.is_active'),
+            'type' => 'boolean',
+        ]);
+    }
+
+    protected function setupCreateOperation(): void
+    {
+        CRUD::setValidation(EmployeeRequest::class);
+
+        CRUD::field('first_name')->label(__('hr::crud.first_name'));
+        CRUD::field('last_name')->label(__('hr::crud.last_name'));
+        CRUD::field('hire_date')->type('date')->label(__('hr::crud.hire_date'));
+
+        CRUD::addField([
+            'name' => 'branch_id',
+            'label' => __('hr::crud.branch'),
+            'type' => 'select2',
+            'entity' => 'branch',
+            'attribute' => 'name',
+            'model' => 'App\\Modules\\Core\\Models\\Branch',
+        ]);
+
+        CRUD::addField([
+            'name' => 'department_id',
+            'label' => __('hr::crud.department'),
+            'type' => 'select2_from_ajax',
+            'entity' => 'department',
+            'attribute' => 'name',
+            'data_source' => route('hr.lookups.departments'),
+            'placeholder' => __('hr::crud.select_department'),
+            'dependencies' => ['branch_id'],
+            'include_all_form_fields' => true,
+        ]);
+
+        CRUD::addField([
+            'name' => 'job_title_id',
+            'label' => __('hr::crud.job_title'),
+            'type' => 'select2_from_ajax',
+            'entity' => 'jobTitle',
+            'attribute' => 'name',
+            'data_source' => route('hr.lookups.jobTitles'),
+            'placeholder' => __('hr::crud.select_job_title'),
+            'dependencies' => ['branch_id', 'department_id'],
+            'include_all_form_fields' => true,
+        ]);
+
+        CRUD::addField([
+            'name' => 'is_active',
+            'label' => __('hr::crud.is_active'),
+            'type' => 'checkbox',
+        ]);
+    }
+
+    protected function setupUpdateOperation(): void
+    {
+        $this->setupCreateOperation();
+    }
+}
+

@@ -1,0 +1,20 @@
+<?php
+
+return [
+    'city' => 'City',
+    'cities' => 'Cities',
+    'branch' => 'Branch',
+    'branches' => 'Branches',
+    'department' => 'Department',
+    'departments' => 'Departments',
+    'job_title' => 'Job Title',
+    'job_titles' => 'Job Titles',
+    'branch_department' => 'Branch Department',
+    'branch_departments' => 'Branch Departments',
+    'branch_job_title' => 'Branch Job Title',
+    'branch_job_titles' => 'Branch Job Titles',
+    'name' => 'Name',
+    'address' => 'Address',
+    'city' => 'City',
+    'is_active' => 'Active',
+];
