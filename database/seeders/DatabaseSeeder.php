@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         $admin = User::firstOrCreate(
-            ['email' => 'admin@admin.com'],
+            ['email' => 'admin@system.com'],
             [
                 'name' => 'Admin User',
                 'password' => bcrypt('Admin@123'),
@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
         $hrUser = User::firstOrCreate(
-            ['email' => 'hr@hr.com'],
+            ['email' => 'hr@system.com'],
             [
                 'name' => 'HR User',
                 'password' => bcrypt('Hr@123'),
@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
         $employeeUser = User::firstOrCreate(
-            ['email' => 'employee@employee.com'],
+            ['email' => 'employee@system.com'],
             [
                 'name' => 'Employee User',
                 'password' => bcrypt('Employee@123'),
