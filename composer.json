@@ -82,7 +82,17 @@
     "extra": {
         "laravel": {
             "dont-discover": []
+        },
+
+        "merge-plugin": {
+            "include": [
+            "Modules/*/composer.json"
+            ],
+            "recurse": true,
+            "replace": false,
+            "merge-dev": true
         }
+
     },
     "config": {
         "optimize-autoloader": true,
