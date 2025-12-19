@@ -12,7 +12,7 @@
 @if($user && ($user->can('core.cities.view') || $user->can('core.branches.view') || $user->can('core.departments.view') || $user->can('core.job_titles.view') || $user->can('core.branch_departments.view') || $user->can('core.branch_job_titles.view')))
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" role="button" aria-expanded="false">
-            <i class="la la-globe nav-icon"></i> {{ __('Core') }}
+            <i class="la la-globe nav-icon"></i> {{ __('messages.core') }}
         </a>
         <div class="dropdown-menu dropdown-menu-arrow">
             @if($user->can('core.cities.view'))
@@ -52,7 +52,7 @@
 @if($user && ($user->can('hr.employees.view') || $user->can('hr.employee_phones.view') || $user->can('hr.employee_identities.view') || $user->can('hr.employee_licenses.view') || $user->can('hr.employee_bank_accounts.view') || $user->can('hr.employee_files.view')))
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" role="button" aria-expanded="false">
-            <i class="la la-users nav-icon"></i> {{ __('HR') }}
+            <i class="la la-users nav-icon"></i> {{ __('messages.hr') }}
         </a>
         <div class="dropdown-menu dropdown-menu-arrow">
             @if($user->can('hr.employees.view'))
@@ -88,3 +88,13 @@
         </div>
     </li>
 @endif
+
+<li class="nav-item">
+    @php
+        $currentLocale = app()->getLocale();
+        $targetLocale = $currentLocale === 'ar' ? 'en' : 'ar';
+    @endphp
+    <a class="nav-link" href="{{ route('lang.switch', ['locale' => $targetLocale]) }}">
+        <i class="la la-language nav-icon"></i> {{ $targetLocale === 'ar' ? __('messages.switch_to_ar') : __('messages.switch_to_en') }}
+    </a>
+</li>
