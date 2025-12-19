@@ -33,14 +33,14 @@ class DatabaseSeeder extends Seeder
                 'email_verified_at' => now(),
             ]
         );
-        $employeeUser = User::firstOrCreate(
-            ['email' => 'employee@system.com'],
-            [
-                'name' => 'Employee User',
-                'password' => bcrypt('Employee@123'),
-                'email_verified_at' => now(),
-            ]
-        );
+        // $employeeUser = User::firstOrCreate(
+        //     ['email' => 'employee@system.com'],
+        //     [
+        //         'name' => 'Employee User',
+        //         'password' => bcrypt('Employee@123'),
+        //         'email_verified_at' => now(),
+        //     ]
+        // );
 
     }
 }
