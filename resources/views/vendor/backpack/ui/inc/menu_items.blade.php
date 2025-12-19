@@ -88,13 +88,3 @@
         </div>
     </li>
 @endif
-
-<li class="nav-item">
-    @php
-        $currentLocale = app()->getLocale();
-        $targetLocale = $currentLocale === 'ar' ? 'en' : 'ar';
-    @endphp
-    <a class="nav-link" href="{{ route('lang.switch', ['locale' => $targetLocale]) }}">
-        <i class="la la-language nav-icon"></i> {{ $targetLocale === 'ar' ? __('messages.switch_to_ar') : __('messages.switch_to_en') }}
-    </a>
-</li>
