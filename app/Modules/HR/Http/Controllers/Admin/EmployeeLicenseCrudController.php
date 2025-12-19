@@ -4,22 +4,28 @@ namespace App\Modules\HR\Http\Controllers\Admin;
 
 use App\Modules\HR\Http\Requests\EmployeeLicenseRequest;
 use App\Modules\HR\Models\EmployeeLicense;
+use App\Modules\HR\Support\Permissions\HandlesCrudPermissions;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 class EmployeeLicenseCrudController extends CrudController
 {
+    use HandlesCrudPermissions;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
+    protected string $permissionPrefix = 'hr.employee_licenses';
+
     public function setup(): void
     {
         CRUD::setModel(EmployeeLicense::class);
         CRUD::setRoute(config('backpack.base.route_prefix').'/employee-licenses');
         CRUD::setEntityNameStrings(__('hr::crud.employee_license'), __('hr::crud.employee_licenses'));
+
+        $this->applyCrudPermissions($this->permissionPrefix);
     }
 
     protected function setupListOperation(): void
@@ -61,4 +67,3 @@ class EmployeeLicenseCrudController extends CrudController
         $this->setupCreateOperation();
     }
 }
-

@@ -4,23 +4,29 @@ namespace App\Modules\HR\Http\Controllers\Admin;
 
 use App\Modules\HR\Http\Requests\EmployeeFileRequest;
 use App\Modules\HR\Models\EmployeeFile;
+use App\Modules\HR\Support\Permissions\HandlesCrudPermissions;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use Illuminate\Support\Facades\Storage;
 
 class EmployeeFileCrudController extends CrudController
 {
+    use HandlesCrudPermissions;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation { store as traitStore; }
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation { update as traitUpdate; }
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
+    protected string $permissionPrefix = 'hr.employee_files';
+
     public function setup(): void
     {
         CRUD::setModel(EmployeeFile::class);
         CRUD::setRoute(config('backpack.base.route_prefix').'/employee-files');
         CRUD::setEntityNameStrings(__('hr::crud.employee_file'), __('hr::crud.employee_files'));
+
+        $this->applyCrudPermissions($this->permissionPrefix);
     }
 
     protected function setupListOperation(): void

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Modules\HR\Database\Seeders\RolesAndPermissionsSeeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -16,6 +17,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // User::factory(10)->create();
+        $this->call(RolesAndPermissionsSeeder::class);
 
         $admin = User::firstOrCreate(
             ['email' => 'admin@system.com'],
@@ -25,6 +27,7 @@ class DatabaseSeeder extends Seeder
                 'email_verified_at' => now(),
             ]
         );
+        $admin->syncRoles(['Admin']);
         $hrUser = User::firstOrCreate(
             ['email' => 'hr@system.com'],
             [
@@ -33,6 +36,7 @@ class DatabaseSeeder extends Seeder
                 'email_verified_at' => now(),
             ]
         );
+        $hrUser->syncRoles(['HR']);
         // $employeeUser = User::firstOrCreate(
         //     ['email' => 'employee@system.com'],
         //     [

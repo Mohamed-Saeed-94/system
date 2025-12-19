@@ -4,22 +4,28 @@ namespace App\Modules\Core\Http\Controllers\Admin;
 
 use App\Modules\Core\Http\Requests\BranchJobTitleRequest;
 use App\Modules\Core\Models\BranchJobTitle;
+use App\Modules\Core\Support\Permissions\HandlesCrudPermissions;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 class BranchJobTitleCrudController extends CrudController
 {
+    use HandlesCrudPermissions;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
+    protected string $permissionPrefix = 'core.branch_job_titles';
+
     public function setup(): void
     {
         CRUD::setModel(BranchJobTitle::class);
         CRUD::setRoute(config('backpack.base.route_prefix').'/branch-job-titles');
         CRUD::setEntityNameStrings(__('core::crud.branch_job_title'), __('core::crud.branch_job_titles'));
+
+        $this->applyCrudPermissions($this->permissionPrefix);
     }
 
     protected function setupListOperation(): void
@@ -79,4 +85,3 @@ class BranchJobTitleCrudController extends CrudController
         $this->setupCreateOperation();
     }
 }
-

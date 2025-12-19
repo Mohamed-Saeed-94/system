@@ -4,22 +4,28 @@ namespace App\Modules\Core\Http\Controllers\Admin;
 
 use App\Modules\Core\Http\Requests\CityRequest;
 use App\Modules\Core\Models\City;
+use App\Modules\Core\Support\Permissions\HandlesCrudPermissions;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 class CityCrudController extends CrudController
 {
+    use HandlesCrudPermissions;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
+    protected string $permissionPrefix = 'core.cities';
+
     public function setup(): void
     {
         CRUD::setModel(City::class);
         CRUD::setRoute(config('backpack.base.route_prefix').'/cities');
         CRUD::setEntityNameStrings(__('core::crud.city'), __('core::crud.cities'));
+
+        $this->applyCrudPermissions($this->permissionPrefix);
     }
 
     protected function setupListOperation(): void
@@ -49,4 +55,3 @@ class CityCrudController extends CrudController
         $this->setupCreateOperation();
     }
 }
-

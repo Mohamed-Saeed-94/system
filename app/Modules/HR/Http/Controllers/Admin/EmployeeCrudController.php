@@ -4,16 +4,20 @@ namespace App\Modules\HR\Http\Controllers\Admin;
 
 use App\Modules\HR\Http\Requests\EmployeeRequest;
 use App\Modules\HR\Models\Employee;
+use App\Modules\HR\Support\Permissions\HandlesCrudPermissions;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 class EmployeeCrudController extends CrudController
 {
+    use HandlesCrudPermissions;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+
+    protected string $permissionPrefix = 'hr.employees';
 
     public function setup(): void
     {
@@ -21,9 +25,7 @@ class EmployeeCrudController extends CrudController
         CRUD::setRoute(config('backpack.base.route_prefix').'/employees');
         CRUD::setEntityNameStrings(__('hr::crud.employee'), __('hr::crud.employees'));
 
-        if (backpack_user()->hasRole('HR')) {
-            CRUD::denyAccess(['delete']);
-        }
+        $this->applyCrudPermissions($this->permissionPrefix);
     }
 
     protected function setupListOperation(): void
@@ -115,4 +117,3 @@ class EmployeeCrudController extends CrudController
         $this->setupCreateOperation();
     }
 }
-
