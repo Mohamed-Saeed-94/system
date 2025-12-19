@@ -5,6 +5,7 @@ namespace App\Modules\HR\Models;
 use App\Modules\Core\Models\Branch;
 use App\Modules\Core\Models\Department;
 use App\Modules\Core\Models\JobTitle;
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -12,6 +13,8 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Employee extends Model
 {
+    use CrudTrait;
+
     protected $fillable = [
         'first_name',
         'last_name',
@@ -67,4 +70,3 @@ class Employee extends Model
         return trim($this->first_name.' '.$this->last_name);
     }
 }
-

@@ -2,11 +2,14 @@
 
 namespace App\Modules\Core\Models;
 
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class JobTitle extends Model
 {
+    use CrudTrait;
+
     protected $fillable = ['name', 'department_id', 'is_active'];
 
     public function department(): BelongsTo
@@ -14,4 +17,3 @@ class JobTitle extends Model
         return $this->belongsTo(Department::class);
     }
 }
-

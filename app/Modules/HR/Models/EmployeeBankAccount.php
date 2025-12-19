@@ -2,11 +2,14 @@
 
 namespace App\Modules\HR\Models;
 
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class EmployeeBankAccount extends Model
 {
+    use CrudTrait;
+
     protected $fillable = [
         'employee_id',
         'bank_name',
@@ -19,4 +22,3 @@ class EmployeeBankAccount extends Model
         return $this->belongsTo(Employee::class);
     }
 }
-

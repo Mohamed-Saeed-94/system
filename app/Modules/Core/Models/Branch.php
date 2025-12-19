@@ -2,12 +2,15 @@
 
 namespace App\Modules\Core\Models;
 
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Branch extends Model
 {
+    use CrudTrait;
+
     protected $fillable = ['name', 'address', 'city_id', 'is_active'];
 
     public function city(): BelongsTo
@@ -25,4 +28,3 @@ class Branch extends Model
         return $this->hasMany(BranchJobTitle::class);
     }
 }
-
