@@ -15,8 +15,8 @@ class CityRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
+            'name_en' => ['required', 'string', 'max:255'],
             'is_active' => ['boolean'],
         ];
     }
 }
-

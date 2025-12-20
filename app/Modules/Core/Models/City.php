@@ -9,5 +9,5 @@ class City extends Model
 {
     use CrudTrait;
 
-    protected $fillable = ['name', 'is_active'];
+    protected $fillable = ['name', 'name_en', 'is_active'];
 }

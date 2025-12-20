@@ -14,6 +14,7 @@ return [
     'branch_job_title' => 'Branch Job Title',
     'branch_job_titles' => 'Branch Job Titles',
     'name' => 'Name',
+    'name_en' => 'English Name',
     'address' => 'Address',
     'city' => 'City',
     'is_active' => 'Active',

@@ -31,6 +31,7 @@ class DepartmentCrudController extends CrudController
     protected function setupListOperation(): void
     {
         CRUD::column('name')->label(__('core::crud.name'));
+        CRUD::column('name_en')->label(__('core::crud.name_en'));
         CRUD::addColumn([
             'name' => 'is_active',
             'label' => __('core::crud.is_active'),
@@ -42,6 +43,7 @@ class DepartmentCrudController extends CrudController
     {
         CRUD::setValidation(DepartmentRequest::class);
         CRUD::field('name')->label(__('core::crud.name'));
+        CRUD::field('name_en')->label(__('core::crud.name_en'));
         CRUD::addField([
             'name' => 'is_active',
             'label' => __('core::crud.is_active'),

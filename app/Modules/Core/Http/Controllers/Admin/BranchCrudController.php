@@ -31,6 +31,7 @@ class BranchCrudController extends CrudController
     protected function setupListOperation(): void
     {
         CRUD::column('name')->label(__('core::crud.name'));
+        CRUD::column('name_en')->label(__('core::crud.name_en'));
         CRUD::column('address')->label(__('core::crud.address'));
         CRUD::addColumn([
             'name' => 'city_id',
@@ -52,6 +53,7 @@ class BranchCrudController extends CrudController
         CRUD::setValidation(BranchRequest::class);
 
         CRUD::field('name')->label(__('core::crud.name'));
+        CRUD::field('name_en')->label(__('core::crud.name_en'));
         CRUD::field('address')->label(__('core::crud.address'));
         CRUD::addField([
             'name' => 'city_id',

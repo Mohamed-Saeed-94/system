@@ -11,7 +11,7 @@ class Branch extends Model
 {
     use CrudTrait;
 
-    protected $fillable = ['name', 'address', 'city_id', 'is_active'];
+    protected $fillable = ['name', 'name_en', 'address', 'city_id', 'is_active'];
 
     public function city(): BelongsTo
     {

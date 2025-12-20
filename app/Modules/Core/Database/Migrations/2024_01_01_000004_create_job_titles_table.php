@@ -10,6 +10,7 @@ return new class extends Migration {
         Schema::create('job_titles', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('name_en');
             $table->foreignId('department_id')->constrained('departments')->cascadeOnDelete();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
@@ -21,4 +22,3 @@ return new class extends Migration {
         Schema::dropIfExists('job_titles');
     }
 };
-

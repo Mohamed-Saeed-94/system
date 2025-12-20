@@ -10,7 +10,7 @@ class JobTitle extends Model
 {
     use CrudTrait;
 
-    protected $fillable = ['name', 'department_id', 'is_active'];
+    protected $fillable = ['name', 'name_en', 'department_id', 'is_active'];
 
     public function department(): BelongsTo
     {

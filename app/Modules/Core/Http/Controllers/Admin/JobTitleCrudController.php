@@ -31,6 +31,7 @@ class JobTitleCrudController extends CrudController
     protected function setupListOperation(): void
     {
         CRUD::column('name')->label(__('core::crud.name'));
+        CRUD::column('name_en')->label(__('core::crud.name_en'));
         CRUD::addColumn([
             'name' => 'department_id',
             'label' => __('core::crud.department'),
@@ -50,6 +51,7 @@ class JobTitleCrudController extends CrudController
     {
         CRUD::setValidation(JobTitleRequest::class);
         CRUD::field('name')->label(__('core::crud.name'));
+        CRUD::field('name_en')->label(__('core::crud.name_en'));
         CRUD::addField([
             'name' => 'department_id',
             'label' => __('core::crud.department'),

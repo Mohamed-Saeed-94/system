@@ -15,10 +15,10 @@ class BranchRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
+            'name_en' => ['required', 'string', 'max:255'],
             'address' => ['nullable', 'string', 'max:500'],
             'city_id' => ['required', 'exists:cities,id'],
             'is_active' => ['boolean'],
         ];
     }
 }
-

@@ -14,6 +14,7 @@ return [
     'branch_job_title' => 'مسميات الفروع',
     'branch_job_titles' => 'مسميات الفروع',
     'name' => 'الاسم',
+    'name_en' => 'الاسم بالإنجليزية',
     'address' => 'العنوان',
     'city' => 'المدينة',
     'is_active' => 'مفعل',

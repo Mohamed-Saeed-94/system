@@ -15,9 +15,9 @@ class JobTitleRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
+            'name_en' => ['required', 'string', 'max:255'],
             'department_id' => ['required', 'exists:departments,id'],
             'is_active' => ['boolean'],
         ];
     }
 }
-

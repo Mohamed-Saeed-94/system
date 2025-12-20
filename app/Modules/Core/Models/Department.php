@@ -10,7 +10,7 @@ class Department extends Model
 {
     use CrudTrait;
 
-    protected $fillable = ['name', 'is_active'];
+    protected $fillable = ['name', 'name_en', 'is_active'];
 
     public function jobTitles(): HasMany
     {
