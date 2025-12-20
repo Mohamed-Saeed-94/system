@@ -56,10 +56,11 @@ class EmployeeFileCrudController extends CrudController
         CRUD::addField([
             'name' => 'employee_id',
             'label' => __('hr::crud.employee'),
-            'type' => 'select2',
+            'type' => 'relationship',
             'entity' => 'employee',
             'attribute' => 'full_name',
             'model' => 'App\\Modules\\HR\\Models\\Employee',
+            'ajax' => true,
         ]);
         CRUD::addField([
             'name' => 'file_upload',

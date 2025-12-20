@@ -51,10 +51,11 @@ class EmployeeLicenseCrudController extends CrudController
         CRUD::addField([
             'name' => 'employee_id',
             'label' => __('hr::crud.employee'),
-            'type' => 'select2',
+            'type' => 'relationship',
             'entity' => 'employee',
             'attribute' => 'full_name',
             'model' => 'App\\Modules\\HR\\Models\\Employee',
+            'ajax' => true,
         ]);
         CRUD::field('license_number')->label(__('hr::crud.license_number'));
         CRUD::field('type')->label(__('hr::crud.type'));

@@ -49,10 +49,11 @@ class EmployeePhoneCrudController extends CrudController
         CRUD::addField([
             'name' => 'employee_id',
             'label' => __('hr::crud.employee'),
-            'type' => 'select2',
+            'type' => 'relationship',
             'entity' => 'employee',
             'attribute' => 'full_name',
             'model' => 'App\\Modules\\HR\\Models\\Employee',
+            'ajax' => true,
         ]);
         CRUD::field('phone')->label(__('hr::crud.phone'));
         CRUD::field('type')->label(__('hr::crud.type'));

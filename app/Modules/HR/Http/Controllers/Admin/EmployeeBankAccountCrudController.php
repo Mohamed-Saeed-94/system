@@ -51,10 +51,11 @@ class EmployeeBankAccountCrudController extends CrudController
         CRUD::addField([
             'name' => 'employee_id',
             'label' => __('hr::crud.employee'),
-            'type' => 'select2',
+            'type' => 'relationship',
             'entity' => 'employee',
             'attribute' => 'full_name',
             'model' => 'App\\Modules\\HR\\Models\\Employee',
+            'ajax' => true,
         ]);
         CRUD::field('name_in_bank')->label(__('hr::crud.name_in_bank'));
         CRUD::field('bank_name')->label(__('hr::crud.bank_name'));

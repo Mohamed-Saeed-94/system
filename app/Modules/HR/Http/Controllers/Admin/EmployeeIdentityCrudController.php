@@ -52,10 +52,11 @@ class EmployeeIdentityCrudController extends CrudController
         CRUD::addField([
             'name' => 'employee_id',
             'label' => __('hr::crud.employee'),
-            'type' => 'select2',
+            'type' => 'relationship',
             'entity' => 'employee',
             'attribute' => 'full_name',
             'model' => 'App\\Modules\\HR\\Models\\Employee',
+            'ajax' => true,
         ]);
         CRUD::field('identity_number')->label(__('hr::crud.identity_number'));
         CRUD::field('issued_at')->type('date')->label(__('hr::crud.issued_at'));

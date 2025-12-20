@@ -83,44 +83,48 @@ class EmployeeCrudController extends CrudController
         CRUD::addField([
             'name' => 'branch_id',
             'label' => __('hr::crud.branch'),
-            'type' => 'select2',
+            'type' => 'relationship',
             'entity' => 'branch',
             'attribute' => 'name',
             'model' => 'App\\Modules\\Core\\Models\\Branch',
+            'ajax' => true,
         ]);
 
         CRUD::addField([
             'name' => 'department_id',
             'label' => __('hr::crud.department'),
-            'type' => 'select2_from_ajax',
+            'type' => 'relationship',
             'entity' => 'department',
             'attribute' => 'name',
             'data_source' => route('hr.lookups.departments'),
             'placeholder' => __('hr::crud.select_department'),
             'dependencies' => ['branch_id'],
             'include_all_form_fields' => true,
+            'ajax' => true,
         ]);
 
         CRUD::addField([
             'name' => 'job_title_id',
             'label' => __('hr::crud.job_title'),
-            'type' => 'select2_from_ajax',
+            'type' => 'relationship',
             'entity' => 'jobTitle',
             'attribute' => 'name',
             'data_source' => route('hr.lookups.jobTitles'),
             'placeholder' => __('hr::crud.select_job_title'),
             'dependencies' => ['branch_id', 'department_id'],
             'include_all_form_fields' => true,
+            'ajax' => true,
         ]);
 
         CRUD::addField([
             'name' => 'nationality_id',
             'label' => __('hr::crud.nationality'),
-            'type' => 'select2',
+            'type' => 'relationship',
             'entity' => 'nationality',
             'attribute' => 'name',
             'model' => 'App\\Modules\\Core\\Models\\Nationality',
             'placeholder' => __('hr::crud.select_nationality'),
+            'ajax' => true,
         ]);
 
         CRUD::addField([
