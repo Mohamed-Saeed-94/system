@@ -15,9 +15,16 @@ class JobTitleRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'name_en' => ['required', 'string', 'max:255'],
+            'name_en' => ['nullable', 'string', 'max:255'],
             'department_id' => ['required', 'exists:departments,id'],
             'is_active' => ['boolean'],
         ];
+    }
+
+    protected function prepareForValidation(): void
+    {
+        if (!$this->has('is_active')) {
+            $this->merge(['is_active' => true]);
+        }
     }
 }

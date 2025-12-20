@@ -17,7 +17,7 @@ class EmployeeRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:100'],
-            'name_en' => ['required', 'string', 'max:100'],
+            'name_en' => ['nullable', 'string', 'max:100'],
             'hire_date' => ['nullable', 'date'],
             'branch_id' => ['required', 'exists:branches,id'],
             'department_id' => [
@@ -38,6 +38,13 @@ class EmployeeRequest extends FormRequest
             ],
             'is_active' => ['boolean'],
         ];
+    }
+
+    protected function prepareForValidation(): void
+    {
+        if (!$this->has('is_active')) {
+            $this->merge(['is_active' => true]);
+        }
     }
 
     public function withValidator($validator): void

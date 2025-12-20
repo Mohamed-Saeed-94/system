@@ -127,6 +127,7 @@ class EmployeeCrudController extends CrudController
             'name' => 'is_active',
             'label' => __('hr::crud.is_active'),
             'type' => 'checkbox',
+            'default' => true,
         ]);
     }
 

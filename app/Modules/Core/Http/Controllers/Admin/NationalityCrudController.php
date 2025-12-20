@@ -49,6 +49,7 @@ class NationalityCrudController extends CrudController
             'name' => 'is_active',
             'label' => __('core::crud.is_active'),
             'type' => 'checkbox',
+            'default' => true,
         ]);
     }
 

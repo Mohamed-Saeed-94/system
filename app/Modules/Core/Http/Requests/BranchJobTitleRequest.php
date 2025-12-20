@@ -19,5 +19,11 @@ class BranchJobTitleRequest extends FormRequest
             'is_active' => ['boolean'],
         ];
     }
-}
 
+    protected function prepareForValidation(): void
+    {
+        if (!$this->has('is_active')) {
+            $this->merge(['is_active' => true]);
+        }
+    }
+}
