@@ -58,6 +58,14 @@ class EmployeeCrudController extends CrudController
             'model' => 'App\\Modules\\Core\\Models\\JobTitle',
         ]);
         CRUD::addColumn([
+            'name' => 'nationality_id',
+            'label' => __('hr::crud.nationality'),
+            'type' => 'select',
+            'entity' => 'nationality',
+            'attribute' => 'name',
+            'model' => 'App\\Modules\\Core\\Models\\Nationality',
+        ]);
+        CRUD::addColumn([
             'name' => 'is_active',
             'label' => __('hr::crud.is_active'),
             'type' => 'boolean',
@@ -103,6 +111,16 @@ class EmployeeCrudController extends CrudController
             'placeholder' => __('hr::crud.select_job_title'),
             'dependencies' => ['branch_id', 'department_id'],
             'include_all_form_fields' => true,
+        ]);
+
+        CRUD::addField([
+            'name' => 'nationality_id',
+            'label' => __('hr::crud.nationality'),
+            'type' => 'select2',
+            'entity' => 'nationality',
+            'attribute' => 'name',
+            'model' => 'App\\Modules\\Core\\Models\\Nationality',
+            'placeholder' => __('hr::crud.select_nationality'),
         ]);
 
         CRUD::addField([

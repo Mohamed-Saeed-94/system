@@ -13,6 +13,8 @@ return [
     'branch_departments' => 'Branch Departments',
     'branch_job_title' => 'Branch Job Title',
     'branch_job_titles' => 'Branch Job Titles',
+    'nationality' => 'Nationality',
+    'nationalities' => 'Nationalities',
     'name' => 'Name',
     'name_en' => 'English Name',
     'address' => 'Address',

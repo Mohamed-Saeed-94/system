@@ -32,6 +32,10 @@ class EmployeeRequest extends FormRequest
                     ->where('branch_id', $this->input('branch_id'))
                     ->where('is_active', 1),
             ],
+            'nationality_id' => [
+                'required',
+                Rule::exists('nationalities', 'id')->where('is_active', 1),
+            ],
             'is_active' => ['boolean'],
         ];
     }

@@ -11,6 +11,8 @@ return [
     'job_title' => 'Job Title',
     'select_department' => 'Select Department',
     'select_job_title' => 'Select Job Title',
+    'nationality' => 'Nationality',
+    'select_nationality' => 'Select Nationality',
     'is_active' => 'Active',
     'employee_phone' => 'Employee Phone',
     'employee_phones' => 'Employee Phones',

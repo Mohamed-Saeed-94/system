@@ -23,6 +23,7 @@ class RolesAndPermissionsSeeder extends Seeder
                 'job_titles' => ['view', 'create', 'update', 'delete'],
                 'branch_departments' => ['view', 'create', 'update', 'delete'],
                 'branch_job_titles' => ['view', 'create', 'update', 'delete'],
+                'nationalities' => ['view', 'create', 'update', 'delete'],
             ],
             'hr' => [
                 'employees' => ['view', 'create', 'update', 'delete'],

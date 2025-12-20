@@ -11,6 +11,8 @@ return [
     'job_title' => 'المسمى الوظيفي',
     'select_department' => 'اختر القسم',
     'select_job_title' => 'اختر المسمى الوظيفي',
+    'nationality' => 'الجنسية',
+    'select_nationality' => 'اختر الجنسية',
     'is_active' => 'مفعل',
     'employee_phone' => 'هاتف الموظف',
     'employee_phones' => 'هواتف الموظف',

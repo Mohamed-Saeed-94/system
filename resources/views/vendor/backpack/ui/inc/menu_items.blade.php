@@ -9,7 +9,7 @@
     </a>
 </li>
 
-@if($user && ($user->can('core.cities.view') || $user->can('core.branches.view') || $user->can('core.departments.view') || $user->can('core.job_titles.view') || $user->can('core.branch_departments.view') || $user->can('core.branch_job_titles.view')))
+@if($user && ($user->can('core.cities.view') || $user->can('core.branches.view') || $user->can('core.departments.view') || $user->can('core.job_titles.view') || $user->can('core.branch_departments.view') || $user->can('core.branch_job_titles.view') || $user->can('core.nationalities.view')))
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" role="button" aria-expanded="false">
             <i class="la la-globe nav-icon"></i> {{ __('messages.core') }}
@@ -33,6 +33,11 @@
             @if($user->can('core.job_titles.view'))
                 <a class="dropdown-item" href="{{ backpack_url('job-titles') }}">
                     <i class="la la-id-badge nav-icon me-2"></i> {{ __('core::crud.job_titles') }}
+                </a>
+            @endif
+            @if($user->can('core.nationalities.view'))
+                <a class="dropdown-item" href="{{ backpack_url('nationalities') }}">
+                    <i class="la la-flag nav-icon me-2"></i> {{ __('core::crud.nationalities') }}
                 </a>
             @endif
             @if($user->can('core.branch_departments.view'))

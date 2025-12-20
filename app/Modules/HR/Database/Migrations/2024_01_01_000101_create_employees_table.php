@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->foreignId('branch_id')->constrained('branches')->cascadeOnDelete();
             $table->foreignId('department_id')->constrained('departments')->cascadeOnDelete();
             $table->foreignId('job_title_id')->constrained('job_titles')->cascadeOnDelete();
+            $table->foreignId('nationality_id')->constrained('nationalities')->cascadeOnDelete();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

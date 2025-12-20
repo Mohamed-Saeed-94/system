@@ -5,6 +5,7 @@ namespace App\Modules\HR\Models;
 use App\Modules\Core\Models\Branch;
 use App\Modules\Core\Models\Department;
 use App\Modules\Core\Models\JobTitle;
+use App\Modules\Core\Models\Nationality;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -22,6 +23,7 @@ class Employee extends Model
         'branch_id',
         'department_id',
         'job_title_id',
+        'nationality_id',
         'is_active',
     ];
 
@@ -38,6 +40,11 @@ class Employee extends Model
     public function jobTitle(): BelongsTo
     {
         return $this->belongsTo(JobTitle::class);
+    }
+
+    public function nationality(): BelongsTo
+    {
+        return $this->belongsTo(Nationality::class);
     }
 
     public function phones(): HasMany

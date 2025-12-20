@@ -13,6 +13,8 @@ return [
     'branch_departments' => 'أقسام الفروع',
     'branch_job_title' => 'مسميات الفروع',
     'branch_job_titles' => 'مسميات الفروع',
+    'nationality' => 'الجنسية',
+    'nationalities' => 'الجنسيات',
     'name' => 'الاسم',
     'name_en' => 'الاسم بالإنجليزية',
     'address' => 'العنوان',
