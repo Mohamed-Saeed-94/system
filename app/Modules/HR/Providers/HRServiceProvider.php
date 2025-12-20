@@ -3,7 +3,6 @@
 namespace App\Modules\HR\Providers;
 
 use Illuminate\Support\Facades\Blade;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
@@ -22,15 +21,6 @@ class HRServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../Resources/views', 'hr');
 
         Blade::componentNamespace('App\\Modules\\HR\\View\\Components', 'hr');
-
-        $this->registerRoutes();
-    }
-
-    protected function registerRoutes(): void
-    {
-        Route::middleware(config('backpack.base.web_middleware', 'web'))
-            ->prefix(config('backpack.base.route_prefix', 'admin'))
-            ->group(base_path('app/Modules/HR/Routes/backpack.php'));
     }
 
     protected function registerConfig(): void
@@ -52,4 +42,3 @@ class HRServiceProvider extends ServiceProvider
         }
     }
 }
-

@@ -3,7 +3,6 @@
 namespace App\Modules\Core\Providers;
 
 use Illuminate\Support\Facades\Blade;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
@@ -29,15 +28,6 @@ class CoreServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../Resources/views', 'core');
 
         Blade::componentNamespace('App\\Modules\\Core\\View\\Components', 'core');
-
-        $this->registerRoutes();
-    }
-
-    protected function registerRoutes(): void
-    {
-        Route::middleware(config('backpack.base.web_middleware', 'web'))
-            ->prefix(config('backpack.base.route_prefix', 'admin'))
-            ->group(base_path('app/Modules/Core/Routes/backpack.php'));
     }
 
     /**
@@ -62,4 +52,3 @@ class CoreServiceProvider extends ServiceProvider
         }
     }
 }
-
