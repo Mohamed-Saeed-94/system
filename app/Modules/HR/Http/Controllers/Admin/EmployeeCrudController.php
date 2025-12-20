@@ -30,8 +30,8 @@ class EmployeeCrudController extends CrudController
 
     protected function setupListOperation(): void
     {
-        CRUD::column('first_name')->label(__('hr::crud.first_name'));
-        CRUD::column('last_name')->label(__('hr::crud.last_name'));
+        CRUD::column('name')->label(__('hr::crud.name'));
+        CRUD::column('name_en')->label(__('hr::crud.name_en'));
         CRUD::column('hire_date')->label(__('hr::crud.hire_date'));
         CRUD::addColumn([
             'name' => 'branch_id',
@@ -68,8 +68,8 @@ class EmployeeCrudController extends CrudController
     {
         CRUD::setValidation(EmployeeRequest::class);
 
-        CRUD::field('first_name')->label(__('hr::crud.first_name'));
-        CRUD::field('last_name')->label(__('hr::crud.last_name'));
+        CRUD::field('name')->label(__('hr::crud.name'));
+        CRUD::field('name_en')->label(__('hr::crud.name_en'));
         CRUD::field('hire_date')->type('date')->label(__('hr::crud.hire_date'));
 
         CRUD::addField([

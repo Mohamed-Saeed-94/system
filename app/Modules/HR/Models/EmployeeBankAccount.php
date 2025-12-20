@@ -12,6 +12,7 @@ class EmployeeBankAccount extends Model
 
     protected $fillable = [
         'employee_id',
+        'name_in_bank',
         'bank_name',
         'account_number',
         'iban',

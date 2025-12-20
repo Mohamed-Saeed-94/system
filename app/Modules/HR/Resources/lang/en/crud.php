@@ -3,8 +3,8 @@
 return [
     'employee' => 'Employee',
     'employees' => 'Employees',
-    'first_name' => 'First Name',
-    'last_name' => 'Last Name',
+    'name' => 'Name',
+    'name_en' => 'English Name',
     'hire_date' => 'Hire Date',
     'branch' => 'Branch',
     'department' => 'Department',
@@ -28,6 +28,7 @@ return [
     'license_number' => 'License Number',
     'employee_bank_account' => 'Employee Bank Account',
     'employee_bank_accounts' => 'Employee Bank Accounts',
+    'name_in_bank' => 'Name in Bank',
     'bank_name' => 'Bank Name',
     'account_number' => 'Account Number',
     'iban' => 'IBAN',

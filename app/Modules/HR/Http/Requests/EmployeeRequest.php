@@ -16,8 +16,8 @@ class EmployeeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'first_name' => ['required', 'string', 'max:100'],
-            'last_name' => ['required', 'string', 'max:100'],
+            'name' => ['required', 'string', 'max:100'],
+            'name_en' => ['required', 'string', 'max:100'],
             'hire_date' => ['nullable', 'date'],
             'branch_id' => ['required', 'exists:branches,id'],
             'department_id' => [
@@ -51,4 +51,3 @@ class EmployeeRequest extends FormRequest
         });
     }
 }
-

@@ -38,6 +38,7 @@ class EmployeeBankAccountCrudController extends CrudController
             'attribute' => 'full_name',
             'model' => 'App\\Modules\\HR\\Models\\Employee',
         ]);
+        CRUD::column('name_in_bank')->label(__('hr::crud.name_in_bank'));
         CRUD::column('bank_name')->label(__('hr::crud.bank_name'));
         CRUD::column('account_number')->label(__('hr::crud.account_number'));
         CRUD::column('iban')->label(__('hr::crud.iban'));
@@ -55,6 +56,7 @@ class EmployeeBankAccountCrudController extends CrudController
             'attribute' => 'full_name',
             'model' => 'App\\Modules\\HR\\Models\\Employee',
         ]);
+        CRUD::field('name_in_bank')->label(__('hr::crud.name_in_bank'));
         CRUD::field('bank_name')->label(__('hr::crud.bank_name'));
         CRUD::field('account_number')->label(__('hr::crud.account_number'));
         CRUD::field('iban')->label(__('hr::crud.iban'));

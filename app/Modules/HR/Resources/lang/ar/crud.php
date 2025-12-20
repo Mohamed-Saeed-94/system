@@ -3,8 +3,8 @@
 return [
     'employee' => 'الموظف',
     'employees' => 'الموظفون',
-    'first_name' => 'الاسم الأول',
-    'last_name' => 'اسم العائلة',
+    'name' => 'الاسم',
+    'name_en' => 'الاسم بالإنجليزية',
     'hire_date' => 'تاريخ التعيين',
     'branch' => 'الفرع',
     'department' => 'القسم',
@@ -28,6 +28,7 @@ return [
     'license_number' => 'رقم الرخصة',
     'employee_bank_account' => 'حساب الموظف البنكي',
     'employee_bank_accounts' => 'حسابات الموظف البنكية',
+    'name_in_bank' => 'الاسم في البنك',
     'bank_name' => 'اسم البنك',
     'account_number' => 'رقم الحساب',
     'iban' => 'آيبان',

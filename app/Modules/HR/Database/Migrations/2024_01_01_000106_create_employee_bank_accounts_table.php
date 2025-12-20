@@ -10,6 +10,7 @@ return new class extends Migration {
         Schema::create('employee_bank_accounts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('employee_id')->constrained('employees')->cascadeOnDelete();
+            $table->string('name_in_bank');
             $table->string('bank_name')->nullable();
             $table->string('account_number');
             $table->string('iban')->nullable();
@@ -22,4 +23,3 @@ return new class extends Migration {
         Schema::dropIfExists('employee_bank_accounts');
     }
 };
-
